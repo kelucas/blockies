@@ -1,7 +1,7 @@
 Blockies
 ========
 
-A tiny library for generating blocky identicons.
+A tiny library for generating blocky identicons, displayed according to the MEW fork.
 
 ![Sample blockies image](sample.png "Blockies")
 

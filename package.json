@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/airgap-it/blockies/issues"
   },
-  "homepage": "https://github.com/airgap-it/blockies#readme"
+  "homepage": "https://github.com/airgap-it/blockies#readme",
+  "devDependencies": {
+    "rollup": "^0.68.0"
+  }
 }
