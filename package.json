@@ -1,21 +1,21 @@
 {
-  "name": "ethereum-blockies",
+  "name": "myetherwallet-blockies",
   "version": "0.1.1",
-  "description": "A tiny library for generating blocky identicons.",
+  "description": "A tiny library for generating blocky identicons, displayed according to the MEW fork.",
   "main": "./dist/blockies.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":
-      "rollup ./src/blockies.js --output.format umd --name 'blockies' --output.file ./dist/blockies.js"
+    "build": "rollup ./src/blockies.js --output.format umd --name 'blockies' --output.file ./dist/blockies.js",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexvandesande/blockies.git"
+    "url": "git+https://github.com/airgap-it/blockies.git"
   },
-  "author": "Erin Dachtler, Alex Van de Sande",
-  "license": "MIT",
+  "author": "Papers GmbH <contact@papers.ch> (https://papers.ch), Erin Dachtler, Alex Van de Sande",
+  "license": "WTFPL",
   "bugs": {
-    "url": "https://github.com/alexvandesande/blockies/issues"
+    "url": "https://github.com/airgap-it/blockies/issues"
   },
-  "homepage": "https://github.com/alexvandesande/blockies#readme"
+  "homepage": "https://github.com/airgap-it/blockies#readme"
 }
