@@ -3,7 +3,7 @@ Blockies
 
 A tiny library for generating blocky identicons, displayed according to the MEW fork.
 
-![Sample blockies image](sample.png "Blockies")
+![](blockies.png)
 
 [**Demo page**](http://download13.github.io/blockies/)
 
