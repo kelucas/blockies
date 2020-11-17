@@ -1,8 +1,8 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	factory(global.blockies = {});
-}(typeof self !== 'undefined' ? self : this, function (exports) { 'use strict';
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.blockies = {}));
+}(this, (function (exports) { 'use strict';
 
 	/**
 	* A handy class to calculate color values.
@@ -244,7 +244,7 @@
 
 	    if(s == 0){
 	        r = g = b = l; // achromatic
-	    }else{
+	    }else {
 	        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
 	        var p = 2 * l - q;
 	        r = hue2rgb(p, q, h + 1/3);
@@ -333,10 +333,8 @@
 	    }, opts)
 	}
 
-	function toDataUrl(address) {
-	    const opts = buildOpts({seed: address.toLowerCase()});
-
-	    const imageData = createImageData(opts.size);
+	function makeImageData(opts){
+		const imageData = createImageData(opts.size);
 	    const width = Math.sqrt(imageData.length);
 
 	    const p = new PNG(opts.size*opts.scale, opts.size*opts.scale, 3);
@@ -357,8 +355,22 @@
 	    return `data:image/png;base64,${p.getBase64()}`;
 	}
 
+	function toDataUrl(address) {
+	    return makeImageData(buildOpts({seed: address.toLowerCase()}))    
+	}
+
+	function create(opts){
+		opts = buildOpts(Object.assign({seed: '', size: 8, scale: 16}, opts));
+		return {
+			toDataURL: function(){
+				return makeImageData(opts)
+			}
+		}
+	}
+
+	exports.create = create;
 	exports.toDataUrl = toDataUrl;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));

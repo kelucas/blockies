@@ -79,10 +79,8 @@ function buildOpts(opts) {
     }, opts)
 }
 
-export function toDataUrl(address) {
-    const opts = buildOpts({seed: address.toLowerCase()});
-
-    const imageData = createImageData(opts.size);
+function makeImageData(opts){
+	const imageData = createImageData(opts.size);
     const width = Math.sqrt(imageData.length);
 
     const p = new PNG(opts.size*opts.scale, opts.size*opts.scale, 3)
@@ -101,4 +99,17 @@ export function toDataUrl(address) {
         }
     }
     return `data:image/png;base64,${p.getBase64()}`;
+}
+
+export function toDataUrl(address) {
+    return makeImageData(buildOpts({seed: address.toLowerCase()}))    
+}
+
+export function create(opts){
+	opts = buildOpts(Object.assign({seed: '', size: 8, scale: 16}, opts))
+	return {
+		toDataURL: function(){
+			return makeImageData(opts)
+		}
+	}
 }
